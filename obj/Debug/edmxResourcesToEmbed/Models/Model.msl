@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="videoshareModelStoreContainer" CdmEntityContainer="videoshareEntities">
+    <EntitySetMapping Name="discussions">
+      <EntityTypeMapping TypeName="videoshareModel.discussion">
+        <MappingFragment StoreEntitySet="discussions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="videoid" ColumnName="videoid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="publishtime" ColumnName="publishtime" />
+          <ScalarProperty Name="contents" ColumnName="contents" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="videoshareModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="signtime" ColumnName="signtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="videoclasses">
+      <EntityTypeMapping TypeName="videoshareModel.videoclass">
+        <MappingFragment StoreEntitySet="videoclass">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="filepath" ColumnName="filepath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="videos">
+      <EntityTypeMapping TypeName="videoshareModel.video">
+        <MappingFragment StoreEntitySet="videos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="classid" ColumnName="classid" />
+          <ScalarProperty Name="descript" ColumnName="descript" />
+          <ScalarProperty Name="filepath" ColumnName="filepath" />
+          <ScalarProperty Name="uploadpersional" ColumnName="uploadpersional" />
+          <ScalarProperty Name="uploadtime" ColumnName="uploadtime" />
+          <ScalarProperty Name="scantimes" ColumnName="scantimes" />
+          <ScalarProperty Name="showpicture" ColumnName="showpicture" />
+          <ScalarProperty Name="videostatus" ColumnName="videostatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

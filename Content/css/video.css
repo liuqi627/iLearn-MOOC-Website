@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+.video_border{
+	min-height:24px;
+	border-bottom:1px solid #ccc;
+}
+#video_part{
+	width:930px;
+	position:relative;
+	margin:0 auto;
+}
+#video_series_num{
+	margin:10px;
+	margin-left:40px;
+	height:27px;
+}
+#video_series_num li{
+	float:left;
+	width:65px;
+	height:27px;
+	text-align:center;
+	line-height:27px;
+	border: 1px solid #ccc;
+	margin-right:8px;
+}
+

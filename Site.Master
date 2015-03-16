@@ -1,0 +1,130 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ilearn.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="zh">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> - 学习是一种生活方式</title>
+    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <asp:PlaceHolder runat="server">     
+          <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder> 
+     <webopt:BundleReference runat="server" Path="~/Content/css" />  
+    <link type="text/css" rel="stylesheet" href="Content/css/body.css" />
+    
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+   
+</head><!--head部分，添加css和script-->
+<body>
+    <form runat="server">
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <%--Framework Scripts--%>
+            <asp:ScriptReference Name="MsAjaxBundle" />
+         
+            <asp:ScriptReference Name="jquery.ui.combined" />
+            <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+            <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+            <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+            <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+            <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+            <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+            <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+            <asp:ScriptReference Name="WebFormsBundle" />
+            <%--Site Scripts--%>
+
+        </Scripts>
+    </asp:ScriptManager>
+        <!--公共js处理-->
+    <script type="text/javascript" src="../Scripts/js/body.js"></script>
+    <div id="cs_contain" style="position:absolute;width:100%">
+	            <div id="cs_navbar">
+                <div class="float-right">
+                    <div id="login">
+                        <asp:Panel runat="server" ID="AnonymousPanel">
+                            <ul style="margin-top:16px">
+                                <li><a id="registerLink" runat="server" href="Account/Register.aspx">注册</a></li>
+                                <li><a id="loginLink" runat="server" href="Account/Login.aspx">登录</a></li>
+                            </ul>
+                        </asp:Panel>
+                        <asp:Panel runat="server" ID="LogedInPanel">
+                            <ul style="margin-top:16px;">
+
+                                <!--在此处添加-->
+
+                                 <li>
+                                    
+                                    <a class="cs_mouse dropdown-toggle" data-toggle="dropdown" href="#" id="user_name"><%=WhoAmI %></a>
+
+                            <!--在此处填写需要下拉的菜单-->
+
+                                     <ul class="dropdown-menu" role="menu">
+                                        <li><a href="../Default.aspx?log=logout">注销</a></li>
+                                    <li><a  href="../Account/ModifyInfo.aspx">修改资料</a></li>
+                                   <li><a href="../Account/ModifyPass.aspx"> 修改密码</a></li>
+                                       </ul>
+                  
+                            <!--结束部分-->
+					
+                                   </li>
+
+                                <!---->
+
+                            </ul>
+                        </asp:Panel>
+                     </div>
+                
+                </div><%--登陆控件--%>
+                    <ul id="cs_navlogside" style=" float:left">
+                        
+                        <li class="cs_logside">
+                            <a class="cs_mouse" href="../About.aspx">关于</a>
+                        </li>
+                        <li class="cs_logside">
+                            <a class="cs_mouse" href="../Default.aspx" >主页</a>
+                        </li>   
+
+                    
+            
+                    </ul>
+
+
+
+
+
+
+                <img src="../Images/img/logo.png" style="width:200px; margin-top:10px;height:30px; padding-left:15%;"/>
+         
+    
+	        </div>
+        </div>   <!--此处为导航部分-->
+    
+
+
+        <!--此处为body部分，定义了三个部分，分别用于其它网页的动态拼接过程-->
+    <div id="body">
+        
+        
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <asp:ContentPlaceHolder runat="server" ID="SearchField" />
+        
+        <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+    </div>
+
+
+        <!--网站的版权声明以及其它的相关说明在此处-->
+    <footer>
+        <div class="content-wrapper">
+            
+            <div class="float-left">
+               &copy; <%: DateTime.Now.Year %> - Hey there~Coming soon!
+            </div>
+        </div>
+    </footer>
+    </form>
+</body>
+</html>

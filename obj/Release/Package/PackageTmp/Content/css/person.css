@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+#per_search_list{
+	top:40px;
+	width:100%;
+}
+
+.cs_midd_body{
+	min-width:1000px;
+}
+table,td,tr,tbody
+{
+	overflow:hidden;
+
+	margin:0px;
+	padding:0px;
+}
+
+.imgtd
+{
+	padding-right:20px;
+	}
+td input{
+	
+	width:90px;
+	height:30px;
+}
+.tdright{
+	margin-bottom:30px;
+}
+.td_right{
+	text-align:center;
+
+
+}
+h2{
+	border:none;
+}

@@ -1,0 +1,30 @@
+﻿.login_out_body {
+    margin:0 auto;
+    min-width:900px;
+    max-width:1100px;
+}
+li label {
+    float:left;
+    margin-top:10px;
+    width:150px;
+}
+label span {
+    color:red;
+}
+.login_out_body ul{
+    padding:0px;
+
+}
+#loginForm,.reg_info {
+    margin-top:80px;
+    
+    width:70%;
+    min-width:700px;
+
+}
+.remind_user {
+    color:red;
+}
+.login_out_body ul input {
+    max-width:320px;
+}

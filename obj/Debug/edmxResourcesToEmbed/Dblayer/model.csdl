@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="videoshareModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ilearnEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="discussions" EntityType="videoshareModel.discussion" />
+    <EntitySet Name="users" EntityType="videoshareModel.user" />
+    <EntitySet Name="videoclasses" EntityType="videoshareModel.videoclass" />
+    <EntitySet Name="videos" EntityType="videoshareModel.video" />
+    <AssociationSet Name="FK__discussio__useri__108B795B" Association="videoshareModel.FK__discussio__useri__108B795B">
+      <End Role="users" EntitySet="users" />
+      <End Role="discussions" EntitySet="discussions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__discussio__video__0F975522" Association="videoshareModel.FK__discussio__video__0F975522">
+      <End Role="videos" EntitySet="videos" />
+      <End Role="discussions" EntitySet="discussions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__videos__uploadpe__09DE7BCC" Association="videoshareModel.FK__videos__uploadpe__09DE7BCC">
+      <End Role="users" EntitySet="users" />
+      <End Role="videos" EntitySet="videos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__videos__classid__08EA5793" Association="videoshareModel.FK__videos__classid__08EA5793">
+      <End Role="videoclass" EntitySet="videoclasses" />
+      <End Role="videos" EntitySet="videos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="discussion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="videoid" Type="Int32" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="publishtime" Type="DateTime" Precision="3" />
+    <Property Name="contents" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="user" Relationship="videoshareModel.FK__discussio__useri__108B795B" FromRole="discussions" ToRole="users" />
+    <NavigationProperty Name="video" Relationship="videoshareModel.FK__discussio__video__0F975522" FromRole="discussions" ToRole="videos" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="pwd" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="sex" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="signtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="discussions" Relationship="videoshareModel.FK__discussio__useri__108B795B" FromRole="users" ToRole="discussions" />
+    <NavigationProperty Name="videos" Relationship="videoshareModel.FK__videos__uploadpe__09DE7BCC" FromRole="users" ToRole="videos" />
+  </EntityType>
+  <EntityType Name="videoclass">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="filepath" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="videos" Relationship="videoshareModel.FK__videos__classid__08EA5793" FromRole="videoclass" ToRole="videos" />
+  </EntityType>
+  <EntityType Name="video">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="classid" Type="Int32" />
+    <Property Name="descript" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="filepath" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="uploadpersional" Type="Int32" />
+    <Property Name="uploadtime" Type="DateTime" Precision="3" />
+    <Property Name="scantimes" Type="Int32" />
+    <Property Name="showpicture" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="videostatus" Type="Int32" />
+    <NavigationProperty Name="discussions" Relationship="videoshareModel.FK__discussio__video__0F975522" FromRole="videos" ToRole="discussions" />
+    <NavigationProperty Name="user" Relationship="videoshareModel.FK__videos__uploadpe__09DE7BCC" FromRole="videos" ToRole="users" />
+    <NavigationProperty Name="videoclass" Relationship="videoshareModel.FK__videos__classid__08EA5793" FromRole="videos" ToRole="videoclass" />
+  </EntityType>
+  <Association Name="FK__discussio__useri__108B795B">
+    <End Role="users" Type="videoshareModel.user" Multiplicity="0..1" />
+    <End Role="discussions" Type="videoshareModel.discussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discussions">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__discussio__video__0F975522">
+    <End Role="videos" Type="videoshareModel.video" Multiplicity="0..1" />
+    <End Role="discussions" Type="videoshareModel.discussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="videos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discussions">
+        <PropertyRef Name="videoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__videos__uploadpe__09DE7BCC">
+    <End Role="users" Type="videoshareModel.user" Multiplicity="0..1" />
+    <End Role="videos" Type="videoshareModel.video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="videos">
+        <PropertyRef Name="uploadpersional" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__videos__classid__08EA5793">
+    <End Role="videoclass" Type="videoshareModel.videoclass" Multiplicity="0..1" />
+    <End Role="videos" Type="videoshareModel.video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="videoclass">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="videos">
+        <PropertyRef Name="classid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
